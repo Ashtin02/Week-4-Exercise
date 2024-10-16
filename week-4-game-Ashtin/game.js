@@ -86,6 +86,27 @@
    * timerId.
    */
   function advanceTimer() {
+    remainingSeconds--;
+
+    if(remainingSeconds === 0){
+      clearInterval(timerId);
+      document.getElementById("time").textContent =  "00:00 Time's Up!!!";
+      return;
+    }
+
+    let minutes = Math.floor(remainingSeconds / MINUTES_IN_HOUR);
+    let seconds = remainingSeconds % SECONDS_IN_MINUTE;
+
+    minutes = "0" + minutes;
+
+    if(seconds < 10){
+      seconds = "0" + seconds;
+    }
+
+    document.getElementById("time").textContent = minutes + ":" + seconds;
+    
+
+
     // TODO
     // Implement the advanceTimer() method so it matches the function description above.
     // Do NOT use magic numbers in your code. Constants are defined at the top
